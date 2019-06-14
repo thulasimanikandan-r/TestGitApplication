@@ -1,10 +1,7 @@
 package com.manis.gitapp.ui.activity
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -13,6 +10,7 @@ import com.manis.gitapp.R
 import com.manis.gitapp.model.GitModel
 import com.manis.gitapp.ui.adapter.GitAdapter
 import com.manis.gitapp.ui.viewmodel.GitViewModel
+import com.manis.gitapp.utils.navigateToActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        title = getString(R.string.title_owners)
 
         viewModel = ViewModelProviders.of(this, GitViewModel.GitViewModelFactory())
                 .get(GitViewModel::class.java)
@@ -50,17 +49,15 @@ class MainActivity : AppCompatActivity() {
                 layoutManager = LinearLayoutManager(this@MainActivity)
                 adapter = gitAdapter
                 gitAdapter.onItemClick = {
-                    Toast.makeText(this@MainActivity, "test->${it.login}", Toast.LENGTH_SHORT).show()
+                    val bundle = Bundle()
+                    bundle.putLong("userId", it.id)
+                    bundle.putString("userName", it.login)
+                    navigateToActivity(this@MainActivity, GitReposActivity::class.java, bundle)
                 }
             }
         } else {
             ownerRecyclerView.visibility = View.GONE
             errorMessage.visibility = View.VISIBLE
         }
-    }
-
-    fun<T> navigateToActivity(context: Context, className : Class<T>){
-        val intent = Intent(context, className)
-        startActivity(intent)
     }
 }

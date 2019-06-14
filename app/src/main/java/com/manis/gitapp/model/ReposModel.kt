@@ -4,10 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class GitModel(
+data class ReposModel(
         @PrimaryKey
         var id: Long = 0,
-        var login: String? = null,
-        var avatar_url: String? = null,
-        var repos_url: String? = null
+        var name: String? = null,
+        var full_name: String? = null,
+        var pulls_url: String? = null
 )

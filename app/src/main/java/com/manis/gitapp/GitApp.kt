@@ -15,6 +15,7 @@ class GitApp : Application(){
         super.onCreate()
         database = Room.databaseBuilder(this, GitDatabase::class.java, "git_db_1.db")
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build()
 
         retrofit = Retrofit.Builder()

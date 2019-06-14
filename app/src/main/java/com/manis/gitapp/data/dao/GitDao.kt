@@ -12,7 +12,7 @@ import com.manis.gitapp.model.GitModel
 interface GitDao {
 
     @Query("Select * from GitModel where id = :id limit 1")
-    fun getData(id: Int): LiveData<GitModel>
+    fun getData(id: Long): LiveData<GitModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllData(gitModel: MutableList<GitModel>)
