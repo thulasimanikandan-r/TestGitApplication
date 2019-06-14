@@ -9,7 +9,7 @@ import com.manis.gitapp.model.GitModel
 import com.manis.gitapp.model.PullsModel
 import com.manis.gitapp.model.ReposModel
 
-@Database(version = 2, entities = [GitModel::class, ReposModel::class, PullsModel::class], exportSchema = false)
+@Database(version = 3, entities = [GitModel::class, ReposModel::class, PullsModel::class], exportSchema = false)
 abstract class GitDatabase : RoomDatabase() {
     abstract fun gitDao(): GitDao
     abstract  fun reposDao() : RepoDao
