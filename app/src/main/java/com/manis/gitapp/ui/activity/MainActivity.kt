@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.manis.gitapp.GitApp
+import com.manis.gitapp.GitApp.Companion.USER_NAME
 import com.manis.gitapp.R
 import com.manis.gitapp.model.GitModel
 import com.manis.gitapp.ui.adapter.GitAdapter
@@ -49,10 +51,9 @@ class MainActivity : AppCompatActivity() {
                 layoutManager = LinearLayoutManager(this@MainActivity)
                 adapter = gitAdapter
                 gitAdapter.onItemClick = {
-                    val bundle = Bundle()
-                    bundle.putLong("userId", it.id)
-                    bundle.putString("userName", it.login)
-                    navigateToActivity(this@MainActivity, GitReposActivity::class.java, bundle)
+                    GitApp.prefs.edit().putString(USER_NAME, it.login).apply()
+
+                    navigateToActivity(this@MainActivity, GitReposActivity::class.java, null)
                 }
             }
         } else {

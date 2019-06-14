@@ -2,6 +2,7 @@
     <string name="app_name">Git Application</string>
     <string name="title_owners">Owners</string>
     <string name="title_repos">Repos</string>
+    <string name="title_pulls">Pulls</string>
     <string name="useravatar">userAvatar</string>
 
     <string name="error_no_data">No data yet!!</string>

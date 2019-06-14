@@ -21,6 +21,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.activity.MainActivity"/>
         </activity>
+        <activity
+            android:name=".ui.activity.OpenPullsActivity"
+            android:parentActivityName=".ui.activity.GitReposActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.GitReposActivity"/>
+        </activity>
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
