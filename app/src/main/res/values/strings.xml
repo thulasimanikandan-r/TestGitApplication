@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Git Application</string>
+    <string name="useravatar">userAvatar</string>
+
+    <string name="error_no_data">No data yet!!</string>
+
+</resources>
